@@ -1,23 +1,26 @@
 Would you have survived on the Titanic?
 ========================================================
 author: Paul Reiners
-date: 
+date: June 9, 2015
 
-First Slide
+Titanic Survival App
 ========================================================
 
-For more details on authoring R presentations click the
-**Help** button on the toolbar.
+The new Titanic Survival App will improve your life in many ways:
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- Find out whether you would have survived the Titanic!
+- Find out whether your friends and family would have survived the Titanic!
+- Find out whether your pets would have survived the Titanic!  (Coming in a future release.)
 
 Slide With Code
 ========================================================
 
 ```{r}
-summary(cars)
+data = read.csv("../data/train.csv")
+data$SurvivedStr <- ifelse(data$Survived == 0, "perished", "survived")
+table(data$Sex, data$SurvivedStr)
+data$ChildOrAdult <- ifelse(data$Age < 18, "child", "adult")
+table(data$ChildOrAdult, data$SurvivedStr)
 ```
 
 Slide With Plot
