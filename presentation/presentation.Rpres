@@ -12,7 +12,7 @@ The new Titanic Survival App will improve your life in many ways:
 - Find out whether your friends and family would have survived the Titanic!
 - Find out whether your pets would have survived the Titanic!  (Coming in a future release.)
 
-Slide With Code
+Survival Statistics
 ========================================================
 
 ```{r}
@@ -27,5 +27,6 @@ Slide With Plot
 ========================================================
 
 ```{r, echo=FALSE}
+# http://stackoverflow.com/a/20674019/7648
 plot(cars)
 ```
