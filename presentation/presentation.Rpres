@@ -15,12 +15,14 @@ The new Titanic Survival App will improve your life in many ways:
 Survival Statistics
 ========================================================
 
-```{r}
+```{r, echo=FALSE}
 data = read.csv("../data/train.csv")
 data$SurvivedStr <- ifelse(data$Survived == 0, "perished", "survived")
-table(data$Sex, data$SurvivedStr)
+sex.table <- table(data$Sex, data$SurvivedStr)
+prop.table(sex.table)
 data$ChildOrAdult <- ifelse(data$Age < 18, "child", "adult")
-table(data$ChildOrAdult, data$SurvivedStr)
+age.table <- table(data$ChildOrAdult, data$SurvivedStr)
+prop.table(age.table)
 ```
 
 Slide With Plot
@@ -28,5 +30,22 @@ Slide With Plot
 
 ```{r, echo=FALSE}
 # http://stackoverflow.com/a/20674019/7648
-plot(cars)
+library(ggplot2)                           
+
+# Set up the vectors                           
+sex <- c("female", "male")
+ages <- c("child", "adult")
+
+# Create the data frame
+df <- expand.grid(sex, ages)
+n <- nrow(data)
+
+df$value <- c(1,1,1,1)    
+
+#Plot the Data
+g <- 
+  ggplot(df, aes(Var1, Var2)) + 
+  geom_point(aes(size = value), colour = "green") + theme_bw() + xlab("") + 
+  ylab("")
+g + scale_size_continuous(range=c(10,30)) + geom_text(aes(label = value))
 ```
