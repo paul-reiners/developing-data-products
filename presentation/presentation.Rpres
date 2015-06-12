@@ -1,4 +1,4 @@
-Would you have survived on the Titanic?
+Would you have survived the sinking of the Titanic?
 ========================================================
 author: Paul Reiners
 date: June 9, 2015
@@ -12,40 +12,48 @@ The new Titanic Survival App will improve your life in many ways:
 - Find out whether your friends and family would have survived the Titanic!
 - Find out whether your pets would have survived the Titanic!  (Coming in a future release.)
 
-Survival Statistics
+Survival Chances
 ========================================================
+
+Probability of survival:
 
 ```{r, echo=FALSE}
 data = read.csv("../data/train.csv")
 data$SurvivedStr <- ifelse(data$Survived == 0, "perished", "survived")
-sex.table <- table(data$Sex, data$SurvivedStr)
-prop.table(sex.table)
 data$ChildOrAdult <- ifelse(data$Age < 18, "child", "adult")
-age.table <- table(data$ChildOrAdult, data$SurvivedStr)
-prop.table(age.table)
+sex.age.table <- table(data$Sex, data$ChildOrAdult, data$SurvivedStr)
+survival.table <- 
+  sex.age.table[,,2] / (sex.age.table[,, 1] + sex.age.table[,,2])
+round(survival.table, 2)
 ```
 
-Slide With Plot
+Survival Chances Plot
 ========================================================
 
+Probability of survival:
+
 ```{r, echo=FALSE}
-# http://stackoverflow.com/a/20674019/7648
-library(ggplot2)                           
+library(ggplot2)  
 
-# Set up the vectors                           
+ages <- c("adult", "child")
 sex <- c("female", "male")
-ages <- c("child", "adult")
 
-# Create the data frame
 df <- expand.grid(sex, ages)
 n <- nrow(data)
 
-df$value <- c(1,1,1,1)    
+df$value <- round(as.vector(survival.table), 2)    
 
-#Plot the Data
 g <- 
   ggplot(df, aes(Var1, Var2)) + 
-  geom_point(aes(size = value), colour = "green") + theme_bw() + xlab("") + 
-  ylab("")
-g + scale_size_continuous(range=c(10,30)) + geom_text(aes(label = value))
+  geom_point(aes(size = value), colour = "green") + theme_bw() + xlab("Age") + 
+  ylab("Sex")
+g + scale_size_continuous(range=c(10, 60)) + geom_text(aes(label = value))
 ```
+
+Try the Titanic Survival App
+============================
+
+Click [here](https://paul-reiners.shinyapps.io/titanic-app) to try the Titatic 
+Survival App
+
+![the Titanic](figures/The_Replacements_-_All_for_Nothing-Nothing_for_All_cover.jpg)
