@@ -18,8 +18,8 @@ Survival Chances
 Probability of survival:
 
 ```{r, echo=FALSE}
-source("../common/survival.R")
-survival.table <- getSurvivalTable()
+source("../titanic-app/survival.R")
+survival.table <- getSurvivalTable("../titanic-app/train.csv")
 round(survival.table, 2)
 ```
 

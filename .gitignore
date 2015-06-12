@@ -5,3 +5,4 @@ titanic-app/shinyapps/*
 .Rproj.user
 presentation/*.html
 presentation/rsconnect/*
+titanic-app/rsconnect/*

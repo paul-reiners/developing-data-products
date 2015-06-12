@@ -18,7 +18,7 @@ shinyUI(
       h4('You entered'),
       verbatimTextOutput("sex"),
       verbatimTextOutput("age"),
-      h4('Which resulted in a probability of surviving of '),
+      h4('Your probability of surviving is'),
       verbatimTextOutput("prediction")
     )
   )

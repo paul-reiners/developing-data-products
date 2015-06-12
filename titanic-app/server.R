@@ -1,7 +1,10 @@
 library(shiny)
 
+source("survival.R")
+
 survivalProbability <- function(sex, age) {
-  ifelse(sex == "female" || age == "child", 1.0, 0.0)
+  survival.table <- getSurvivalTable()
+  round(survival.table[sex, age], 2)
 }
 
 shinyServer(
