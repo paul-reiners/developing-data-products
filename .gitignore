@@ -3,3 +3,5 @@ presentation/presentation-figure/*.*
 presentation/presentation.md
 titanic-app/shinyapps/*
 .Rproj.user
+presentation/*.html
+presentation/rsconnect/*
