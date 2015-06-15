@@ -2,6 +2,8 @@ Would you have survived the sinking of the Titanic?
 ========================================================
 author: Paul Reiners
 date: June 9, 2015
+font-family: 'Helvetica'
+css: custom.css
 
 Titanic Survival App
 ========================================================
@@ -49,7 +51,7 @@ g + scale_size_continuous(range=c(10, 60)) + geom_text(aes(label = value))
 Try the Titanic Survival App
 ============================
 
-Click [here](https://paul-reiners.shinyapps.io/titanic-app) to try the Titatic 
+Click [here](https://paul-reiners.shinyapps.io/titanic-app) to try the Titanic 
 Survival App
 
 ![the Titanic](figures/The_Replacements_-_All_for_Nothing-Nothing_for_All_cover.jpg)

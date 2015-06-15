@@ -5,6 +5,7 @@ shinyUI(
     # Application title
     headerPanel("Would you survive on the Titanic?"),
     sidebarPanel(
+      p("Select your sex and age below, then click the Submit button.  Your chances of survival will be output on the right."),
       radioButtons("radioSex", label = h3("Sex"),
                    choices = list("Male" = "male", "Female" = "female"), 
                    selected = "male"),

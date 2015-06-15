@@ -3,7 +3,7 @@ library(shiny)
 source("survival.R")
 
 survivalProbability <- function(sex, age) {
-  survival.table <- getSurvivalTable()
+  survival.table <- getSurvivalTable("train.csv")
   round(survival.table[sex, age], 2)
 }
 
